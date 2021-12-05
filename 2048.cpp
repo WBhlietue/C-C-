@@ -2,7 +2,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
-
+#define up 72
+#define down 80
+#define left 75
+#define right 77
 using namespace std;
 int main()
 {
@@ -59,92 +62,95 @@ int main()
 			}
 			cout << "\n        -------------------------\n";
 		}
-		char a = getch();
-
-		switch (a)
+		char a;
+		if (getch() == 224)
 		{
-		case 'w':
-			system("cls");
-			for (int o = 1; o <= 3; o++)
+			a = getch();
+			switch (a)
 			{
-				for (int p = 15; p >= 4; p--)
+			case up:
+				system("cls");
+				for (int o = 1; o <= 3; o++)
 				{
-					if (g[p - 4] == g[p])
+					for (int p = 15; p >= 4; p--)
 					{
-						g[p - 4] += g[p];
-						g[p] = 0;
-					}
-					if (g[p - 4] == 0)
-					{
-						g[p - 4] = g[p];
-						g[p] = 0;
-					}
-				}
-			}
-			break;
-		case 's':
-			system("cls");
-			for (int o = 1; o <= 3; o++)
-			{
-				for (int p = 0; p < 12; p++)
-				{
-					if (g[p] == g[p + 4])
-					{
-						g[p + 4] += g[p];
-						g[p] = 0;
-					}
-					if (g[p + 4] == 0)
-					{
-						g[p + 4] = g[p];
-						g[p] = 0;
-					}
-				}
-			}
-			break;
-		case 'a':
-			system("cls");
-			for (int o = 1; o <= 3; o++)
-			{
-				for (int p = 15; p > 0; p--)
-				{
-					if (p % 4 != 0)
-					{
-						if (g[p] == g[p - 1])
+						if (g[p - 4] == g[p])
 						{
-							g[p - 1] += g[p];
+							g[p - 4] += g[p];
 							g[p] = 0;
 						}
-						if (g[p - 1] == 0)
+						if (g[p - 4] == 0)
 						{
-							g[p - 1] = g[p];
+							g[p - 4] = g[p];
 							g[p] = 0;
 						}
 					}
 				}
-			}
-			break;
-		case 'd':
-			system("cls");
-			for (int o = 1; o <= 3; o++)
-			{
-				for (int p = 0; p < 16; p++)
+				break;
+			case down:
+				system("cls");
+				for (int o = 1; o <= 3; o++)
 				{
-					if (p % 4 != 3)
+					for (int p = 0; p < 12; p++)
 					{
-						if (g[p] == g[p + 1])
+						if (g[p] == g[p + 4])
 						{
-							g[p + 1] += g[p];
+							g[p + 4] += g[p];
 							g[p] = 0;
 						}
-						if (g[p + 1] == 0)
+						if (g[p + 4] == 0)
 						{
-							g[p + 1] = g[p];
+							g[p + 4] = g[p];
 							g[p] = 0;
 						}
 					}
 				}
+				break;
+			case left:
+				system("cls");
+				for (int o = 1; o <= 3; o++)
+				{
+					for (int p = 15; p > 0; p--)
+					{
+						if (p % 4 != 0)
+						{
+							if (g[p] == g[p - 1])
+							{
+								g[p - 1] += g[p];
+								g[p] = 0;
+							}
+							if (g[p - 1] == 0)
+							{
+								g[p - 1] = g[p];
+								g[p] = 0;
+							}
+						}
+					}
+				}
+				break;
+			case right:
+				system("cls");
+				for (int o = 1; o <= 3; o++)
+				{
+					for (int p = 0; p < 16; p++)
+					{
+						if (p % 4 != 3)
+						{
+							if (g[p] == g[p + 1])
+							{
+								g[p + 1] += g[p];
+								g[p] = 0;
+							}
+							if (g[p + 1] == 0)
+							{
+								g[p + 1] = g[p];
+								g[p] = 0;
+							}
+						}
+					}
+				}
+				break;
 			}
-			break;
 		}
 	}
 	return 0;
